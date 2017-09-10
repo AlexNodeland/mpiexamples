@@ -1,0 +1,14 @@
+#!/bin/bash
+#PBS -l nodes=2:ppn=1,walltime=04:00:00
+#PBS -N test
+#PBS -q short
+
+module load gcc/4.9.2
+module load shared
+module load mvapich2/gcc/64/2.1
+module load blas/gcc/64/3.5.0
+module load torque/5.1.0
+
+cd $PBS_O_WORKDIR
+
+mpirun -np 2 ./mc_exec 100000000 1 output_file
